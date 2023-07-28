@@ -10,5 +10,22 @@ namespace Hastane.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+        public string Nationality { get; set; }
+        public string Address { get; set; }
+        public DateTime DOB { get; set; }//dogum tarihi (Date Of Birth)
+        public string Specialist { get; set; }
+        public Department Department { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Payroll> Payrolls { get; set; }
+
+    }
+}
+namespace Hastane.Models
+{
+    public enum Gender
+    {
+        Male,Female
     }
 }
