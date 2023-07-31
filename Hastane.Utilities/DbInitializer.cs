@@ -47,10 +47,10 @@ namespace Hastane.Utilities
                 _userManager.CreateAsync(new ApplicationUser
                 {
                     UserName = "Ersin",
-                    Email = "ersin@sau.com"
+                    Email = "b191210016@sakarya.edu.tr"
 
-                }, "Ersin@123").GetAwaiter().GetResult();
-                var Appuser = _context.ApplicationUsers.FirstOrDefault(x => x.Email == "ersin@sau.com");
+                }, "sau").GetAwaiter().GetResult();
+                var Appuser = _context.ApplicationUsers.FirstOrDefault(x => x.Email == "b191210016@sakarya.edu.tr");
                 if (Appuser != null)
                 {
                     _userManager.AddToRoleAsync(Appuser, WebSiteRoles.WebSite_Admin).GetAwaiter().GetResult();
