@@ -3,8 +3,10 @@ using Hastane.Repositories.Interfaces;
 using Hastane.Utilities;
 using Hastane.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +14,7 @@ namespace Hastane.Services
 {
     public class HospitalInfoService : IHospitalInfo
     {
-        private IUnitOfWork _unitOfWork;
+		private IUnitOfWork _unitOfWork;
         public HospitalInfoService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -53,7 +55,8 @@ namespace Hastane.Services
             return result;
         }
 
-        public HospitalInfoViewModel GetHospitalById(int HospitalId)
+
+		public HospitalInfoViewModel GetHospitalById(int HospitalId)
         {
             var model = _unitOfWork.GenericRepository<HospitalInfo>().GetById(HospitalId);
             var vm = new HospitalInfoViewModel(model);

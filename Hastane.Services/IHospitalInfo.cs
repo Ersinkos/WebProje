@@ -1,8 +1,10 @@
 ﻿using Hastane.Utilities;
 using Hastane.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,5 +17,5 @@ namespace Hastane.Services
         void UpdateHospitalInfo(HospitalInfoViewModel HospitalInfo);
         void InsertHospitalInfo(HospitalInfoViewModel hospitalInfo);
         void DeleteHospitalInfo(int id);
-    }
+	}
 }
