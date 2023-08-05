@@ -21,6 +21,7 @@ builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddTransient<IHospitalInfo, HospitalInfoService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IContactService, ContactService>();
+builder.Services.AddTransient<IApplicationUserService, ApplicationUserService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -28,9 +29,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-	app.UseExceptionHandler("/Home/Error");
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -44,15 +45,15 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.MapControllerRoute(
-	name: "default",
-	pattern: "{Area=admin}/{controller=Hospitals}/{action=Index}/{id?}");
+    name: "default",
+    pattern: "{Area=admin}/{controller=Hospitals}/{action=Index}/{id?}");
 
 app.Run();
 void DataSedding()
 {
-	using (var scope = app.Services.CreateScope())
-	{
-		var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-		dbInitializer.Initialize();
-	}
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
 }
