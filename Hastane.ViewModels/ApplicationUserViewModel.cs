@@ -7,42 +7,41 @@ using System.Threading.Tasks;
 
 namespace Hastane.ViewModels
 {
-    public class ApplicationUserViewModel
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string userName { get; set; }
-        public string City { get; set; }
-        public bool isDoctor { get; set; }
-        public Gender Gender { get; set; }
-        public string Specialist { get; set; }
-        public ApplicationUserViewModel()
-        {
+	public class ApplicationUserViewModel
+	{
+		public string Name { get; set; } = null!;
+		public string Email { get; set; } = null!;
+		public string userName { get; set; } = null!;
+		public string City { get; set; } = null!;
+		public bool isDoctor { get; set; }
+		public Gender Gender { get; set; }
+		public string Specialist { get; set; }= null!;
+		public ApplicationUserViewModel()
+		{
 
-        }
-        public ApplicationUserViewModel(ApplicationUser user)
-        {
-            Name = user.Name;
-            City = user.City;
-            Gender = user.Gender;
-            Specialist = user.Specialist;
-            isDoctor = user.IsDoctor;
-            userName = user.UserName;
-            Email = user.Email;
-        }
-        public ApplicationUser ConvertViewModelToModel(ApplicationUserViewModel user)
-        {
-            return new ApplicationUser
-            {
-                Name = user.Name,
-                City = user.City,
-                Gender = user.Gender,
-                Specialist = user.Specialist,
-                IsDoctor = user.isDoctor,
-                Email = user.Email,
-                UserName = user.userName
-            };
-        }
-        public List<ApplicationUser> Doctors { get; set; } = new List<ApplicationUser>();
-    }
+		}
+		public ApplicationUserViewModel(ApplicationUser user)
+		{
+			Name = user.Name;
+			Email = user.Email;
+			userName = user.UserName;
+			City = user.City;
+			Gender = user.Gender;
+			Specialist = user.Specialist;
+		}
+		public ApplicationUser ConvertViewModelToModel(ApplicationUserViewModel user)
+		{
+			return new ApplicationUser
+			{
+				Name = user.Name,
+				City = user.City,
+				Gender = user.Gender,
+				Specialist = user.Specialist,
+
+				Email = user.Email,
+				UserName = user.userName
+			};
+		}
+		public List<ApplicationUser> Doctors { get; set; } = new List<ApplicationUser>();
+	}
 }

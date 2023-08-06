@@ -38,6 +38,7 @@ namespace Hastane.Services
             }
             var result = new PagedResult<ApplicationUserViewModel>
             {
+                Data = vmList,
                 TotalItems = totalCount,
                 PageNumber = pageNumber,
                 PageSize = pageSize
@@ -47,7 +48,30 @@ namespace Hastane.Services
 
         public PagedResult<ApplicationUserViewModel> GetAllDoctor(int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            var vm = new ApplicationUserViewModel();
+            int totalCount;
+            List<ApplicationUserViewModel> vmList = new List<ApplicationUserViewModel>();
+            try
+            {
+                int ExcludeRecords = (pageSize * pageNumber) - pageSize;
+
+                var modelList = _unitOfWork.GenericRepository<ApplicationUser>().GetAll(x => x.IsDoctor == true).Skip(ExcludeRecords).Take(pageSize).ToList();
+                totalCount = _unitOfWork.GenericRepository<ApplicationUser>().GetAll(x => x.IsDoctor == true).ToList().Count;
+
+                vmList = ConvertModelToViewModelList(modelList);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            var result = new PagedResult<ApplicationUserViewModel>
+            {
+                Data = vmList,
+                TotalItems = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+            return result;
         }
 
         public PagedResult<ApplicationUserViewModel> GetAllPatient(int pageNumber, int pageSize)
@@ -65,6 +89,6 @@ namespace Hastane.Services
             return modelList.Select(x => new ApplicationUserViewModel(x)).ToList();
         }
 
-      
+
     }
 }

@@ -25,9 +25,5 @@
     <ProjectReference Include="..\Hastane.Utilities\Hastane.Utilities.csproj" />
     <ProjectReference Include="..\Hastane.Services\Hastane.Services.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Doctor\Controllers\" />
-    <Folder Include="Areas\Doctor\Views\" />
-  </ItemGroup>
 
 </Project>
