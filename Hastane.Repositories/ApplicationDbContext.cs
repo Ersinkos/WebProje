@@ -32,5 +32,6 @@ namespace Hastane.Repositories
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<TestPrice> TestPrices { get; set; }
         public DbSet<PatientReport> PatientReports { get; set; }
+        public DbSet<Timing> Timing { get; set; }
     }
 }
